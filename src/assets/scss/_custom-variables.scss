@@ -1,0 +1,53 @@
+//custom colors
+$a: #f7f7f7;
+$b: #454043;
+$c: #d8d8d8;
+$d: #7f7f7f;
+$e: #fefefe;
+$f: #e8e8e8;
+$g: #feebd2;
+$h: #ffffff;
+$i: #2d2d44;
+$j: #fbad42;
+$j: #d56c2c;
+$k: #2f466c;
+$l: #f6f6f6;
+$m: #404040;
+$n: #ebc36c;
+$o: #f0f0f0;
+$p: #2b4164;
+$q: #000000;
+$r: #979797;
+$s: #1a1b1c;
+$butterscotch: #faaf48;
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1260px
+) !default;
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1200px
+) !default;
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 30px !default;
