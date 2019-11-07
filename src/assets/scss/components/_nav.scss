@@ -1,0 +1,44 @@
+.nav {
+  &__list {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    list-style-type: none;
+  }
+
+  &__link {
+    font-family: Lato;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    color: $b;
+    text-transform: uppercase;
+  }
+}
+
+.nav-toggle {
+  &__line {
+    display: block;
+    width: 32px;
+    height: 4.5px;
+    border: solid 1px $b;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .nav {
+    &:not(.nav__active) {
+      display: none;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .nav-toggle {
+    display: none;
+  }
+}

@@ -1,5 +1,13 @@
 .header {
-  height: 80px;
+  &__inner {
+    display: flex;
+    align-items: center;
+    height: 80px;
+  }
+
+  &__starter {
+    display: none;
+  }
 }
 
 @include media-breakpoint-up(md) {
