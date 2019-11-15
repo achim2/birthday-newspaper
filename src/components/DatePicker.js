@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 
+import Select from "./Select";
+
 class DatePicker extends Component {
   state = {
     years: [2019, 2020, 2021, 2022],
-    months: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     days: [],
     currentYear: 0,
     currentMonth: 0,
@@ -11,14 +13,14 @@ class DatePicker extends Component {
   };
 
   componentDidMount() {
-    this.setCurrentDate()
+    this.setCurrentDate();
   };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (prevState.currentYear !== this.state.currentYear || prevState.currentMonth !== this.state.currentMonth) {
       this.setState((state, props) => {
         return {
-          days: this.setDays(parseInt(state.currentYear), parseInt(state.currentMonth))
+          days: this.setDays(parseInt(state.currentYear), parseInt(state.currentMonth) - 1)
         }
       });
     }
@@ -29,7 +31,7 @@ class DatePicker extends Component {
     let date = new Date(Date.UTC(year, month, 1));
 
     while (date.getMonth() === month) {
-      days.push(new Date(date));
+      days.push(new Date(date).getDate());
       date.setDate(date.getDate() + 1);
     }
 
@@ -50,43 +52,40 @@ class DatePicker extends Component {
     this.setState(() => {
       return {
         currentYear: new Date().getFullYear(),
-        currentMonth: new Date().getMonth(),
+        currentMonth: new Date().getMonth() + 1,
         currentDay: new Date().getDate()
       }
-    })
+    });
+  };
+
+  handleChange = (item, type) => {
+    this.setState({
+      [type]: item,
+    });
   };
 
   render() {
-    let yearsArr = this.state.years.map((item, key) => <option key={key}>{item}</option>);
-    let monthsArr = this.state.months.map((item, key) => <option value={item} key={key}>{item + 1}</option>);
-    let daysArr = this.state.days.map((item, key) => <option key={key}>{item.getDate()}</option>);
-
     return (
       <div>
-        <form action="">
-          <select
-            name="currentYear"
-            value={this.state.currentYear}
-            onChange={this.handleSelectChange.bind(this)}>
-            {yearsArr}
-          </select>
-          <select
-            name="currentMonth"
-            value={this.state.currentMonth}
-            onChange={this.handleSelectChange.bind(this)}>
-            {monthsArr}
-          </select>
-          <select
-            name="currentDay"
-            value={this.state.currentDay}
-            onChange={this.handleSelectChange.bind(this)}>
-            {daysArr}
-          </select>
-        </form>
+        <div className="d-flex mb-5">
+          <Select items={this.state.years}
+                  name="currentYear"
+                  current={this.state.currentYear}
+                  onSelectChanged={this.handleChange}/>
+          <Select items={this.state.months}
+                  name="currentMonth"
+                  current={this.state.currentMonth}
+                  onSelectChanged={this.handleChange}/>
+          <Select items={this.state.days}
+                  name="currentDay"
+                  current={this.state.currentDay}
+                  onSelectChanged={this.handleChange}/>
+        </div>
 
-        <button onClick={this.setCurrentDate}>set current date</button>
-
-        <p>{this.state.currentYear + ' ' + (this.state.currentMonth + 1) + ' ' + this.state.currentDay}</p>
+        <div className="d-flex align-items-center">
+          <button onClick={this.setCurrentDate}>set current date</button>
+          <p className="ml-2 mb-0">{this.state.currentYear + ' ' + (this.state.currentMonth) + ' ' + this.state.currentDay}</p>
+        </div>
       </div>
     );
   };
