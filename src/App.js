@@ -19,7 +19,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App" style={{'marginTop': '200px'}}>
+      <div className="App" style={{'marginTop': '100px'}}>
         <Header isOpen={this.state.isMenuOpen} clicked={this.handleToggle}/>
 
         <div className="container">

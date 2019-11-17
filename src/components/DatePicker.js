@@ -126,7 +126,7 @@ class DatePicker extends Component {
     return (
       <div>
         <h3>Válasz dátumot!</h3>
-        <div className="d-flex mb-5">
+        <div className="datepicker">
           <Select items={this.state.years}
                   id="currentYear"
                   current={this.state.currentYear}
