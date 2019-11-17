@@ -1,71 +1,61 @@
-* {
-  box-sizing: border-box;
-}
+.select {
+  .select__overlay {
+    position: absolute;
+    background-color: rgba(#000, .2);
+  }
 
-.select-box {
-  position: relative;
-  width: 200px;
-  background-color: #fff;
-}
+  .select__container {
+    position: relative;
+  }
 
-.select-box--container {
-  height: 30px;
-  border: 1px solid #aaa;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
+  .select__selected {
+    padding: 5px 20px;
+    border: 1px solid #eee;
+  }
 
-.select-box--selected-item {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  padding: 4px 12px;
-  vertical-align: middle;
-}
+  .select__items {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    border: 1px solid #bbb;
+    background-color: #bbb;
+    transform: translateY(-50%);
+  }
 
-.select-box--items div.selected {
-  background: aqua;
-}
+  .select__item {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
 
-.select-box--items div {
-  border-bottom: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  padding: 6px 6px 6px 20px;
-  background-color: #fff;
-}
+    &--active,
+    &--active-sibling {
+      display: flex;
+    }
 
-.select-box--arrow {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 30px;
-  height: 30px;
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  background: #aaa;
-}
+    &--active {
+      background-color: aqua;
+    }
+  }
 
-.select-box--arrow-down {
-  position: absolute;
-  top: 10px;
-  left: 8px;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 10px solid #fff;
-}
+  .select__arrow {
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 30px;
+    background-color: #d56c2c;
+    color: #fff;
 
-.select-box--arrow-up {
-  position: absolute;
-  top: 10px;
-  left: 8px;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 10px solid #fff;
+    &--up {
+      top: -30px;
+    }
+
+    &--down {
+      bottom: -30px;
+    }
+
+  }
 }
