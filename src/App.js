@@ -1,26 +1,10 @@
-import React, {Component} from 'react';
-import Header from './components/Header';
-
-// import Footer from './components/Footer';
+import React, { Component } from 'react';
 import DatePicker from './components/DatePicker';
 
 class App extends Component {
-  state = {
-    isMenuOpen: false
-  };
-
-  handleToggle = () => {
-    this.setState((prevState) => {
-      return {
-        isMenuOpen: !prevState.isMenuOpen
-      }
-    });
-  };
-
   render() {
     return (
-      <div className="App" style={{'marginTop': '100px'}}>
-        <Header isOpen={this.state.isMenuOpen} clicked={this.handleToggle}/>
+      <div className="App" style={{ 'marginTop': '100px' }}>
 
         <div className="container">
           <div className="row">
@@ -32,7 +16,6 @@ class App extends Component {
           </div>
         </div>
 
-        {/*<Footer/>*/}
       </div>
     );
   }
